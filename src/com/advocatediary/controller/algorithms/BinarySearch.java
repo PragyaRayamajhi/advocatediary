@@ -30,7 +30,7 @@ public class BinarySearch {
         if (searchColumn.equals("Case ID")) {
             try {
                 int searchInt = Integer.parseInt(searchValue); // Convert the search value to an integer
-                int midInt = Integer.parseInt(midValue); // Convert mid value (Drone ID) to integer
+                int midInt = Integer.parseInt(midValue); // Convert mid value (case ID) to integer
 
                 if (searchInt == midInt) { // Match found
                     return contractList.get(mid);
@@ -40,7 +40,7 @@ public class BinarySearch {
                     return searchByField(searchValue, searchColumn, contractList, mid + 1, right);
                 }
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Invalid input for Drone ID. Please enter a valid number.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Invalid input for case ID. Please enter a valid number.", "Error", JOptionPane.ERROR_MESSAGE);
                 return null;
             }
         }

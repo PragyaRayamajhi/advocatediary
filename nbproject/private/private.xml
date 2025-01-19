@@ -4,12 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/User/Downloads/AdvocateDiary%20(3)/AdvocateDiary/src/com/advocatediary/controller/algorithms/MergeSort.java</file>
-            <file>file:/C:/Users/User/Downloads/AdvocateDiary%20(3)/AdvocateDiary/src/com/advocatediary/controller/algorithms/BinarySearch.java</file>
             <file>file:/C:/Users/User/Downloads/AdvocateDiary%20(3)/AdvocateDiary/src/com/advocatediary/model/AdvocateDiaryModel.java</file>
             <file>file:/C:/Users/User/Downloads/AdvocateDiary%20(3)/AdvocateDiary/src/com/advocatediary/view/AdvocateDiary.java</file>
             <file>file:/C:/Users/User/Downloads/AdvocateDiary%20(3)/AdvocateDiary/src/com/advocatediary/util/ValidationUtil.java</file>
-            <file>file:/C:/Users/User/Downloads/AdvocateDiary%20(3)/AdvocateDiary/src/com/advocatediary/controller/algorithms/SelectionSort.java</file>
             <file>file:/C:/Users/User/Downloads/AdvocateDiary%20(3)/AdvocateDiary/src/com/advocatediary/controller/datastructure/CustomQueue.java</file>
+            <file>file:/C:/Users/User/Downloads/AdvocateDiary%20(3)/AdvocateDiary/src/com/advocatediary/controller/algorithms/SelectionSort.java</file>
             <file>file:/C:/Users/User/Downloads/AdvocateDiary%20(3)/AdvocateDiary/src/com/advocatediary/controller/algorithms/InsertionSort.java</file>
         </group>
     </open-files>

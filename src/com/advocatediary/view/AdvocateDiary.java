@@ -34,7 +34,7 @@ public class AdvocateDiary extends javax.swing.JFrame {
         initComponents();
         validationUtil = new ValidationUtil();
         initializeLayout(); // Set up CardLayout and add screens
-        initializeData(); // Initialize student data and table
+        initializeData(); // Initialize case data and table
         startProgress(); // Show loading screen and initiate progress       
     }
 
@@ -862,8 +862,8 @@ public class AdvocateDiary extends javax.swing.JFrame {
     }
 
     /**
-     * Initializes the application's data, including the student list and table.
-     * Populates the student list with sample data for demonstration purposes.
+     * Initializes the application's data, including the case list and table.
+     * Populates the case list with sample data for demonstration purposes.
      */
         private void initializeData() {
         caseList = new LinkedList<>();
@@ -931,25 +931,7 @@ public class AdvocateDiary extends javax.swing.JFrame {
         });
     }
 
-//    private Boolean updateStudent(AdvocateDiaryModel student){
-//        
-//    }
-//    
-//    private Boolean deleteStudent(int lmuId){
-//        
-//    }
-//
-//    private AdvocateDiaryModel createStudentModel(......){
-//        
-//    }
-//    
-//    private void clearForm(){
-//        
-//    }
-//    
-//    private void loadStudentListToTable(){
-//        
-//    }
+
     /**
      * Switches the application screen to the specified screen name.
      *
@@ -1033,13 +1015,13 @@ public class AdvocateDiary extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private boolean isCaseIdExists(int caseId) {
-    // Replace 'droneList' with the actual list or database storing drone data
-    for (AdvocateDiaryModel drone : caseList) { 
-        if (drone.getCaseId() == caseId) {
-            return true; // Drone ID already exists
+    // Replace 'caseList' with the actual list or database storing  data
+    for (AdvocateDiaryModel advocate : caseList) { 
+        if (advocate.getCaseId() == caseId) {
+            return true; // case ID already exists
         }
     }
-    return false; // Drone ID is unique
+    return false; // case ID is unique
 }
     
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
@@ -1073,6 +1055,9 @@ public class AdvocateDiary extends javax.swing.JFrame {
                         "Duplicate Entry", 
                         JOptionPane.ERROR_MESSAGE);
             } else{
+            
+                
+            
             
             AdvocateDiaryModel caseModel = new AdvocateDiaryModel(caseIdValue, caseName, caseType, assignedLawyer, caseStatus, courtName, filingDate, clientName, contactNo);
 
@@ -1208,32 +1193,33 @@ public class AdvocateDiary extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         // Retrieve the selected field and sorting order from combo boxes
-    String selectedField = cmbSortBy.getSelectedItem().toString();  // For selecting Drone ID, ItemName, or Location
+    String selectedField = cmbSortBy.getSelectedItem().toString();  // For selecting Case ID, ItemName, or Location
     String selectedOrder = cmbSelectionSortingOrder.getSelectedItem().toString();  // For selecting Ascending/Descending
 
     // Check if a valid field is selected
     if (selectedField.equals("Select Field")) {
-        JOptionPane.showMessageDialog(this, "Please select a valid field for sorting (Drone ID, ItemName, or Location).", "Error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Please select a valid field for sorting (case ID, ItemName, or Location).", "Error", JOptionPane.ERROR_MESSAGE);
         return; // Exit if no field is selected
     }
 
     // Determine the sort order: true for descending, false for ascending
+  
     boolean isDesc = selectedOrder.equals("Descending");
-
+    
     // Initialize the sorted list variable
     List<AdvocateDiaryModel> sortedList = null;
 
     // Sort the data based on the selected field
     if (selectedField.equals("CaseID")) {
-        // Use SelectionSort for Drone ID
+        // Use SelectionSort for Case ID
         SelectionSort selectionSort = new SelectionSort();
         sortedList = selectionSort.sortByCaseId(caseList, isDesc);
     } else if (selectedField.equals("CaseName")) {
-        // Use InsertionSort for ItemName
+        // Use InsertionSort for CaseName
         InsertionSort insertionSort = new InsertionSort();
         sortedList = insertionSort.sortByItemName(caseList, isDesc);
     } else if (selectedField.equals("Assigend Lawyer")) {
-        // Use MergeSort for Location
+        // Use MergeSort for Assigend Lawyer
         MergeSort mergeSort = new MergeSort();
         sortedList = mergeSort.sortByAssigendLawyer(caseList, isDesc);
     }
@@ -1250,6 +1236,7 @@ public class AdvocateDiary extends javax.swing.JFrame {
         // TODO add your handling code here:
         // Get user inputs
         String searchValue = txtSearchValue.getText().trim();
+        
         String selectedColumn = "Case ID";
 
         // Validate input
@@ -1258,7 +1245,7 @@ public class AdvocateDiary extends javax.swing.JFrame {
             return;
         }
         BinarySearch binarySearch = new BinarySearch();
-        // Sort the drone list based on the selected column
+        // Sort the case list based on the selected column
         sortCaseList(selectedColumn);
 
         // Perform binary search
@@ -1270,14 +1257,12 @@ public class AdvocateDiary extends javax.swing.JFrame {
 
        private void sortCaseList(String selectedColumn) {
         // Sorting based on selected column
-//        if (selectedColumn.equals("Drone ID")) {
-//            droneList.sort(Comparator.comparingInt(DroneModel::getDroneId)); // Sort by Drone ID
-            
+    
         SelectionSort selectionSort = new SelectionSort();
         if (selectedColumn.equals("Case ID")) {
             // Sort in Ascending order
             boolean isDesc = false;
-            // Sort the droneList using SelectionSort
+            // Sort the caseList using SelectionSort
             caseList = selectionSort.sortByCaseId(caseList, isDesc);
             
         } 
@@ -1320,23 +1305,23 @@ public class AdvocateDiary extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchValueActionPerformed
 
-    private void loadListToTable(List<AdvocateDiaryModel>studentList){
+    private void loadListToTable(List<AdvocateDiaryModel>caseList){
         DefaultTableModel model=(DefaultTableModel) tblCase.getModel();
         
         //clear existing rows if needed
         model.setRowCount(0);
         
-        //populate the table with drone data
-        studentList.forEach(drone-> model.addRow(new Object[]{
-        drone.getCaseId(),
-        drone.getCaseName(),
-        drone.getCaseType(),
-        drone.getAssignedLawyer(),
-        drone.getCaseStatus(),
-        drone.getCourtName(),
-        drone.getFilingDate(),
-        drone.getClientName(),
-        drone.getContactNo()
+        //populate the table with advocate data
+        caseList.forEach(advocate-> model.addRow(new Object[]{
+        advocate.getCaseId(),
+        advocate.getCaseName(),
+        advocate.getCaseType(),
+        advocate.getAssignedLawyer(),
+        advocate.getCaseStatus(),
+        advocate.getCourtName(),
+        advocate.getFilingDate(),
+        advocate.getClientName(),
+        advocate.getContactNo()
     }));
     }
     

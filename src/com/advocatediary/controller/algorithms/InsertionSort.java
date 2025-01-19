@@ -36,15 +36,15 @@ public class InsertionSort {
 
         // Insertion sort algorithm
         for (int i = 1; i < caseSortList.size(); i++) {
-            AdvocateDiaryModel currentDrone = caseSortList.get(i);
+            AdvocateDiaryModel currentCase = caseSortList.get(i);
             int j = i - 1;
 
-            // Move elements that are greater than currentDrone (or less, based on order)
-            while (j >= 0 && shouldSwap(currentDrone.getCaseName(), caseSortList.get(j).getCaseName(), isDesc)) {
+            // Move elements that are greater than currentcase (or less, based on order)
+            while (j >= 0 && shouldSwap(currentCase.getCaseName(), caseSortList.get(j).getCaseName(), isDesc)) {
                 caseSortList.set(j + 1, caseSortList.get(j));
                 j = j - 1;
             }
-            caseSortList.set(j + 1, currentDrone);
+            caseSortList.set(j + 1, currentCase);
         }
 
         return caseSortList;
